@@ -1,1 +1,1 @@
-# Wizard-Battle-
+# WizardBattle
