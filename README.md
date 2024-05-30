@@ -1,2 +1,2 @@
 # WizardBattle
-#yuh
+wizards bitch
