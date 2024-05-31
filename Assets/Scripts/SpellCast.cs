@@ -6,15 +6,21 @@ using UnityEngine;
 public class SpellCast : MonoBehaviour
 {
     [SerializeField] private Transform spellCastLoc;
+    [SerializeField] private Transform cam;
     void Update()
     {
-        if (Input.GetKey(KeyCode.Keypad1))
+        if (Input.GetKey(KeyCode.Q))
         {
-            var inv = this.GetComponent<PlayerSpellPickup>().playerInventory;
-            SpellItem spell = inv[0].item;
-
-            Instantiate(spell.projectile);
+            StartCoroutine(CastSpell(0));
 
         }
+    }
+
+    IEnumerator CastSpell(int n)
+    {
+        var inv = this.GetComponent<PlayerSpellPickup>().playerInventory;
+        SpellItem spell = inv[n].item;
+        Instantiate(spell.projectile, spellCastLoc.position, cam.rotation);
+        yield return new WaitForSeconds(spell.fireRate);
     }
 }

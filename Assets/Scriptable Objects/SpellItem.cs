@@ -18,6 +18,8 @@ public class SpellItem : ScriptableObject
     [SerializeField] public string itemName;
     [SerializeField] public int manaCost;
 
+    [Header("Inventory Item")]
+    [SerializeField] public Texture image;
 
 
 }

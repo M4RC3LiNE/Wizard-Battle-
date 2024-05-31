@@ -4,17 +4,29 @@ using UnityEngine;
 
 public class PlayerSpellPickup : MonoBehaviour
 {
+
+    [Header("Inventory Items")]
+    public GameObject spellItem;
+
+    public List <Transform> slot;
+
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("touch object");
         if (other.GetComponent<SpellItemObject>())
         {
-            Debug.Log("Touched Spell");
             if (playerInventory.Count <= 4)
             {
-                Debug.Log("Added Spell to inv");
                 playerInventory.Add(new Inventory(1, other.GetComponent<SpellItemObject>().spell));
+                
+
+                
+
+                var newItem = Instantiate(spellItem, slot[playerInventory.Count - 1].position, Quaternion.identity, slot[playerInventory.Count - 1]);
+                newItem.GetComponent<SpellItemSlot>().spell = other.GetComponent<SpellItemObject>().spell;
+
+
                 Destroy(other.gameObject);
+
             }
             
             
@@ -32,6 +44,6 @@ public class PlayerSpellPickup : MonoBehaviour
             item = _item;
         }
     }
-
+    [Header("Inventory Data")]
     [SerializeField] public List<Inventory> playerInventory = new List<Inventory>();
 }
