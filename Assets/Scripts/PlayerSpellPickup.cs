@@ -14,24 +14,54 @@ public class PlayerSpellPickup : MonoBehaviour
     {
         if (other.GetComponent<SpellItemObject>())
         {
-            if (playerInventory.Count <= 4)
+            for (int i = 0; i < playerInventory.Count; i++)
+            {
+                if (playerInventory[i] == null)
+                {
+                    playerInventory.Remove(playerInventory[i]);
+                }
+            }
+            if (playerInventory.Count < 4)
             {
                 playerInventory.Add(new Inventory(1, other.GetComponent<SpellItemObject>().spell));
+                UpdateInventory();
                 
-
-                
-
-                var newItem = Instantiate(spellItem, slot[playerInventory.Count - 1].position, Quaternion.identity, slot[playerInventory.Count - 1]);
-                newItem.GetComponent<SpellItemSlot>().spell = other.GetComponent<SpellItemObject>().spell;
-
-
                 Destroy(other.gameObject);
-
             }
-            
+        }
+    }
+
+    private void UpdateInventory()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+
+            for (int n = 0; n < slot[i].childCount; n++)
+            {
+                Destroy(slot[i].GetChild(n).gameObject);
+            }
+
+            if (playerInventory[i].item)
+            {
+                var newItem = Instantiate(spellItem, slot[i].position, Quaternion.identity, slot[i]);
+
+                newItem.GetComponent<SpellItemSlot>().spell = playerInventory[i].item;
+            }
             
         }
     }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            UpdateInventory();
+        }
+    }
+
+
+
+
 
     [System.Serializable]
     public class Inventory

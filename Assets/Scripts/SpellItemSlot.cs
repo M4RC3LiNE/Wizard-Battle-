@@ -15,7 +15,10 @@ public class SpellItemSlot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<RawImage>().texture = spell.image;
-
+        if (GetComponent<RawImage>())
+        {
+            GetComponent<RawImage>().texture = spell.image;
+        }
+        
     }
 }
