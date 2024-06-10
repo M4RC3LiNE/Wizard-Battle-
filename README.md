@@ -1,1 +1,2 @@
-# Wizard-Battle-
+# WizardBattle
+wizards bitch
