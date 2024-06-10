@@ -16,17 +16,20 @@ public class PlayerSpellPickup : MonoBehaviour
         {
             for (int i = 0; i < playerInventory.Count; i++)
             {
-                if (playerInventory[i] == null)
+                if (playerInventory[i].item == null)
                 {
                     playerInventory.Remove(playerInventory[i]);
                 }
             }
             if (playerInventory.Count < 4)
             {
-                playerInventory.Add(new Inventory(1, other.GetComponent<SpellItemObject>().spell));
-                UpdateInventory();
-                
                 Destroy(other.gameObject);
+                var spell = other.GetComponent<SpellItemObject>().spell;
+                playerInventory.Add(new Inventory(1, spell));
+                UpdateInventory();
+
+
+                
             }
         }
     }
@@ -40,14 +43,26 @@ public class PlayerSpellPickup : MonoBehaviour
             {
                 Destroy(slot[i].GetChild(n).gameObject);
             }
-
-            if (playerInventory[i].item)
+            if (playerInventory.Count > i)
             {
-                var newItem = Instantiate(spellItem, slot[i].position, Quaternion.identity, slot[i]);
+                if (playerInventory[i].item != null)
+                {
+                    if (slot[i] != null)
+                    {
+                        var newItem = Instantiate(spellItem, slot[i].position, Quaternion.identity, slot[i]);
+                        newItem.GetComponent<SpellItemSlot>().spell = playerInventory[i].item;
+                    }
 
-                newItem.GetComponent<SpellItemSlot>().spell = playerInventory[i].item;
+                }
+                else
+                {
+                    playerInventory.Remove(playerInventory[i]);
+                }
             }
             
+
+            
+
         }
     }
 

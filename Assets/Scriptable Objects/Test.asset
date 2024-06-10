@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa5f1e935db54ea4adc610881a45b7d, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f3174d3cda3f4cc799ae27c8c4b339b, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  projectile: {fileID: 997216633698054775, guid: dfdd1c4ba084c4985abcabc538e0f51e, type: 3}
-  fireRate: 1
+  projectile: {fileID: 0}
+  fireRate: 0
   itemDesc: 
   itemName: 
   manaCost: 0
-  image: {fileID: 2800000, guid: 329971aae7a0c42bc9a7e1053e0473ee, type: 3}
+  image: {fileID: 0}
