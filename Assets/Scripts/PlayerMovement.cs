@@ -8,7 +8,10 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public Transform orientation;
 
-    private float jumpHeight = 100f;
+    public float jumpForce;
+    public float jumpCooldown;
+    public float airMultiplier;
+    bool readyToJump = true;
 
     float horizontalInput, verticalInput;
 
@@ -50,9 +53,11 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        //if (Input.GetKey("Jump") && isgrounded)
+        if (Input.GetKey(KeyCode.Space) && isgrounded && readyToJump)
         {
-            //rb.AddForce(Vector3.up * jumpHeight, ForceMode.Force);
+            readyToJump = false;
+            Jump();
+            Invoke(nameof(ResetJump), jumpCooldown);
         }
     }
 
@@ -60,7 +65,10 @@ public class PlayerMovement : MonoBehaviour
     {
         moveDirec = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        rb.AddForce(moveDirec.normalized * moveSpeed * 10f, ForceMode.Force);
+        if (isgrounded)
+            rb.AddForce(moveDirec.normalized * moveSpeed * 10f, ForceMode.Force);
+        else
+            rb.AddForce(moveDirec.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
     }
 
 
@@ -73,6 +81,17 @@ public class PlayerMovement : MonoBehaviour
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
+    }
+
+    private void Jump()
+    {
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }
+
+    private void ResetJump()
+    {
+        readyToJump = true;
     }
 
     [Header("Drag")]

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f3174d3cda3f4cc799ae27c8c4b339b, type: 3}
   m_Name: Test2
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
-  fireRate: 0
+  projectile: {fileID: 997216633698054775, guid: dfdd1c4ba084c4985abcabc538e0f51e, type: 3}
+  fireRate: 0.1
+  range: 20
   itemDesc: 
   itemName: 
   manaCost: 0
-  image: {fileID: 0}
+  image: {fileID: 2800000, guid: 7ce8052a1ad604d76a57af7146941f0d, type: 3}

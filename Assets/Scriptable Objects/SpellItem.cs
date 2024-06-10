@@ -10,6 +10,7 @@ public class SpellItem : ScriptableObject
     [Header("Projectile")]
     [SerializeField] public GameObject projectile;
     [SerializeField] public float fireRate;
+    [SerializeField] public float range;
 
 
     [Header("Item Info")]
