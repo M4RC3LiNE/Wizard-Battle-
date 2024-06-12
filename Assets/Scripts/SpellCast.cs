@@ -7,29 +7,43 @@ public class SpellCast : MonoBehaviour
 {
     [SerializeField] private Transform spellCastLoc;
     [SerializeField] private Transform cam;
+    [SerializeField] private Transform selected;
+    public int selectedSlot;
     void Update()
     {
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetMouseButton(0))
         {
-            StartCoroutine(CastSpell(0));
-
+            StartCoroutine(CastSpell(selectedSlot));
         }
 
-        if (Input.GetKey(KeyCode.E))
+        if (Input.mouseScrollDelta.y < 0)
         {
-            StartCoroutine(CastSpell(1));
-
+            if (selectedSlot < 3)
+            {
+                selectedSlot += 1;
+            }
+            else
+            {
+                selectedSlot = 0;
+            }
         }
-        if (Input.GetKey(KeyCode.F))
+        else if (Input.mouseScrollDelta.y > 0)
         {
-            StartCoroutine(CastSpell(2));
+            if (selectedSlot > 0)
+            {
+                selectedSlot -= 1;
+            }
+            else
+            {
+                selectedSlot = 3;
+            }
 
-        }
-        if (Input.GetKey(KeyCode.R))
-        {
-            StartCoroutine(CastSpell(3));
 
+            
         }
+
+        selected.position = GetComponent<PlayerSpellPickup>().slot[selectedSlot].position;
+
     }
 
     IEnumerator CastSpell(int n)
