@@ -1245,6 +1245,8 @@ GameObject:
   - component: {fileID: 905873091}
   - component: {fileID: 905873092}
   - component: {fileID: 905873093}
+  - component: {fileID: 905873094}
+  - component: {fileID: 905873095}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1378,6 +1380,43 @@ MonoBehaviour:
   spellCastLoc: {fileID: 1465571500}
   cam: {fileID: 963194228}
   selected: {fileID: 786602621}
+  selectedSlot: 0
+--- !u!114 &905873094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905873085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5393b6d66dfb4f648309536ba0acc0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orbInv:
+  - item: {fileID: 11400000, guid: 3bd831cf069a043219b98326c60dc06f, type: 2}
+    slot: {fileID: 66663801}
+  - item: {fileID: 11400000, guid: 3bd831cf069a043219b98326c60dc06f, type: 2}
+    slot: {fileID: 382979132}
+  - item: {fileID: 0}
+    slot: {fileID: 1427278868}
+--- !u!114 &905873095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905873085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e73b609fedc214ae3bb4b6eaf89605a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected: {fileID: 682660412}
+  slot:
+  - {fileID: 66663802}
+  - {fileID: 382979133}
+  - {fileID: 1427278869}
   selectedSlot: 0
 --- !u!1 &917502732
 GameObject:

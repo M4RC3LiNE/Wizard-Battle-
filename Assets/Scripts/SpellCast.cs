@@ -50,8 +50,11 @@ public class SpellCast : MonoBehaviour
     {
         var inv = this.GetComponent<PlayerSpellPickup>().playerInventory;
         SpellItem spell = inv[n].item;
-        var newSpell = Instantiate(spell.projectile, spellCastLoc.position, cam.rotation);
-        newSpell.GetComponent<SpellMovement>().range = spell.range;
-        yield return new WaitForSeconds(spell.fireRate);
+        if (spell)
+        {
+            var newSpell = Instantiate(spell.projectile, spellCastLoc.position, cam.rotation);
+            newSpell.GetComponent<SpellMovement>().range = spell.range;
+            yield return new WaitForSeconds(spell.fireRate);
+        }
     }
 }
