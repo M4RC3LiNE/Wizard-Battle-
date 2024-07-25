@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float jumpForce;
     public float jumpCooldown;
-    public float airMultiplier;
+    public float airMultiplier = 10;
     bool readyToJump = true;
 
     float horizontalInput, verticalInput;
@@ -19,21 +19,30 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
+    CharacterController cc;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        playerHeight = this.GetComponent<BoxCollider>().size.y;
+        cc = GetComponent<CharacterController>();
     }
 
     private void Update()
     {
+        if (cc.isGrounded)
+        {
+            Debug.Log("grounded");
+        }
+
         KeyInput();
 
         SpeedControl();
 
-        isgrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        //isgrounded = Physics.Raycast(GetComponent<BoxCollider>().center, Vector3.down, (playerHeight * 0.5f) + 0.0f, whatIsGround);
 
-        if (isgrounded)
+        if (cc.isGrounded)
         {
             rb.drag = groundDrag;
         }
@@ -53,8 +62,9 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKey(KeyCode.Space) && isgrounded && readyToJump)
+        if (Input.GetKey(KeyCode.Space) && cc.isGrounded && readyToJump)
         {
+            Debug.Log("Jump");
             readyToJump = false;
             Jump();
             Invoke(nameof(ResetJump), jumpCooldown);
@@ -97,6 +107,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Drag")]
     public float playerHeight;
     public LayerMask whatIsGround;
-    bool isgrounded;
-    public float groundDrag;
+    public bool isgrounded;
+    public float groundDrag = 2;
 }

@@ -16,20 +16,24 @@ public class PlayerCam : MonoBehaviour
         Cursor.visible = false;
     }
 
+    public GameObject orbView;
     private void Update()
     {
-        transform.position = camLoc.position;
+        if (!orbView.activeInHierarchy)
+        {
+            transform.position = camLoc.position;
 
-        var mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        var mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+            var mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
+            var mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
 
-        yRotation += mouseX;
-        xRotation -= mouseY;
+            yRotation += mouseX;
+            xRotation -= mouseY;
 
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+            transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
 
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+            orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        }
     }
 }

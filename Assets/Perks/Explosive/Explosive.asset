@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 859494e2795f6354a9db2340b6ab21c4, type: 3}
+  m_Name: Explosive
+  m_EditorClassIdentifier: 
+  itemName: Explosive
+  itemDesc: An explosion is summoned when a projectile collides with something
+  itemImage: {fileID: 21300000, guid: 591bd31312ead814f801a5f1fecf96eb, type: 3}
+  manaCost: 0
+  cooldown: 0.25
+  range: 0
+  spread: 0
+  attack: 0
+  speed: 0
+  drag: 0
+  ability: 3
+  explosion: {fileID: 6510879070651122217, guid: 96fc006943f3abd439a65d8df4e675b0, type: 3}

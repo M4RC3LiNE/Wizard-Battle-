@@ -21,6 +21,11 @@ public class OrbSelect : MonoBehaviour
             {
                 selectedSlot = 0;
             }
+            
+            if (GetComponent<OrbInv>().orbView.activeInHierarchy)
+            {
+                GetComponent<OrbInv>().OpenInv();
+            }
         }
         else if (Input.mouseScrollDelta.y > 0)
         {
@@ -31,6 +36,11 @@ public class OrbSelect : MonoBehaviour
             else
             {
                 selectedSlot = slot.Count - 1;
+            }
+
+            if (GetComponent<OrbInv>().orbView.activeInHierarchy)
+            {
+                GetComponent<OrbInv>().OpenInv();
             }
         }
         selected.position = slot[selectedSlot].position;
