@@ -15,7 +15,7 @@ MonoBehaviour:
   projectile: {fileID: 8217822020903878327, guid: 53eaafa67f458704c804892c2a57d830, type: 3}
   itemDesc: A spear of magic
   itemName: Magic Lance
-  manaCost: 0
+  manaCost: 10
   cooldown: 0.57
   range: 175
   spread: 0
