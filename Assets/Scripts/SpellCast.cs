@@ -10,6 +10,7 @@ public class SpellCast : MonoBehaviour
     public Transform spellCastLoc;
     public Transform cam;
     public Transform projectiles; //Parent of all projectile objects
+    public Transform dot;
 
     OrbItem currentOrb;
     OrbInv orbInv;
@@ -71,6 +72,7 @@ public class SpellCast : MonoBehaviour
             {
                 SpellItem spell = currentOrb.spell[i];
                 var newSpell = Instantiate(spell.projectile, spellCastLoc.position, cam.rotation, projectiles);
+                newSpell.transform.LookAt(dot.position);
                 UpdateSpellInfo(newSpell, spell);
                 newSpell.transform.Rotate(SpellSpread(spell) + NumSpread(perkSpread));
                 if (newSpell.GetComponent<SpellMovement>())
@@ -99,9 +101,8 @@ public class SpellCast : MonoBehaviour
             newBoltHolder.GetComponent<BoltHolder>().spell = spell;
             bolt.currentBolt = newBoltHolder;
 
-            var player = GameObject.Find("Player");
+            var player = this.gameObject;
             bolt.player = player;
-            Transform cam = GameObject.Find("PlayerCam").transform;
             Transform spellCastLoc = player.GetComponent<SpellCast>().spellCastLoc;
             var rate = spell.rate;
             StartCoroutine(newSpell.GetComponent<Bolt>().fireSegment(rate, spellCastLoc, cam));

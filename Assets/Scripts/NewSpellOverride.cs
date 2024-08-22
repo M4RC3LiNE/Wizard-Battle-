@@ -33,6 +33,7 @@ public class NewSpellOverride : MonoBehaviour ,IPointerClickHandler
                     orbItem.spell.Add(spellPopup.spell);
                 }
                 
+                Destroy(spellPopup.player.GetComponent<ItemPickup>().item);
                 spellPopup.newSpellOpen = false;
                 spellPopup.player.GetComponent<OrbInv>().CloseInv();
             }

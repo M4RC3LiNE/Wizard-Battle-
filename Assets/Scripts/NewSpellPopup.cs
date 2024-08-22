@@ -6,7 +6,6 @@ public class NewSpellPopup : MonoBehaviour
 {
     public bool newSpellOpen = false;
     public GameObject slot;
-    public GameObject orbView;
     public GameObject player;
     public SpellItem spell;
 
@@ -21,6 +20,14 @@ public class NewSpellPopup : MonoBehaviour
             player.GetComponent<OrbInv>().OpenInv();
 
         }
+    }
+
+    public void CloseItemPickupScreen()
+    {
+        newSpellOpen = false;
+        spell = null;
+
+        player.GetComponent<OrbInv>().CloseInv();
     }
 
     void Update()

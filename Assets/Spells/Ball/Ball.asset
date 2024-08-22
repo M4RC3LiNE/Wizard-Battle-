@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f3174d3cda3f4cc799ae27c8c4b339b, type: 3}
   m_Name: Ball
   m_EditorClassIdentifier: 
-  projectile: {fileID: 997216633698054775, guid: dfdd1c4ba084c4985abcabc538e0f51e, type: 3}
+  projectile: {fileID: 8217822020903878327, guid: 53eaafa67f458704c804892c2a57d830, type: 3}
   itemDesc: Ball
   itemName: Ball
   manaCost: 0
-  cooldown: 0.1
+  cooldown: -5
   range: 300
   spread: 0
   attack: 0
   speed: 100
-  drag: 20
+  drag: 0
   image: {fileID: 21300000, guid: 6a6d48f68895ea0449b3a504877796ab, type: 3}
-  bolt: 0
+  bolt: 1
   rate: 0
-  segments: 0
-  boltProjectile: {fileID: 0}
+  segments: 10
+  boltProjectile: {fileID: 997216633698054775, guid: dfdd1c4ba084c4985abcabc538e0f51e, type: 3}
   destroyOnTrigger: 0
   boltSpread: 0
   boltDrag: 0

@@ -66,12 +66,17 @@ public class Bolt : MonoBehaviour
 
     void Update()
     {
+        transform.position = player.transform.position;
         if (spell)
         {
             rate = spell.rate;
             segments = spell.segments;
             projectile = spell.boltProjectile;
             drag = spell.boltDrag;
+        }
+        if (!currentBolt)
+        {
+            Destroy(this.gameObject);
         }
     }
     

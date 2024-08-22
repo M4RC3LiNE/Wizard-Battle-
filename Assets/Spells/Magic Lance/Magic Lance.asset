@@ -16,7 +16,7 @@ MonoBehaviour:
   itemDesc: A spear of magic
   itemName: Magic Lance
   manaCost: 0
-  cooldown: 1
+  cooldown: 0.57
   range: 175
   spread: 0
   attack: 0
